@@ -1,0 +1,1 @@
+let cards={ict10:[{category:"Input Devices",question:"Name two common input devices.",hint:"Used to enter data.",answer:"Keyboard and mouse.",image:"images/input/input1.png"}]};

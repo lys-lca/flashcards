@@ -1,57 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Flashcards</title>
-<link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="screen">
+    <!-- Hidden print area -->
+    <div id="print-area" style="display:none;"></div>
 
-    <!-- CATEGORY DROPDOWN -->
-    <div class="category-area">
-        <label>Choose Category:</label>
-        <select id="category-select" onchange="changeCategory()">
-            <option value="ict10">ICT Sample (10 cards)</option>
-        </select>
-    </div>
+    <div class="screen">
 
-    <!-- FLASHCARD -->
-    <div class="card">
-
-        <div id="category" class="category-label"></div>
-
-        <img id="card-image" class="flashcard-image" src="" alt="">
-
-        <h2 id="question" class="question"></h2>
-
-        <div id="hint" class="hint"></div>
-
-        <div id="answer" class="answer"></div>
-
-        <div id="score-box" class="score-box">
-            Correct: <span id="correct">0</span> |
-            Incorrect: <span id="incorrect">0</span>
+        <!-- CATEGORY SELECTION -->
+        <div class="category-area">
+            <label for="category-select">Choose Category:</label>
+            <select id="category-select" onchange="changeCategory()"></select>
         </div>
 
-        <div class="btn-row">
-            <button class="btn blue" onclick="showHint()">Show Hint</button>
-            <button class="btn blue" onclick="revealAnswer()">Reveal Answer</button>
-            <button class="btn green" onclick="markCorrect()">Correct</button>
-            <button class="btn red" onclick="markIncorrect()">Incorrect</button>
-            <button class="btn blue" onclick="prevCard()">Previous</button>
-            <button class="btn blue" onclick="nextCard()">Next</button>
-            <button class="btn gray" onclick="resetScores()">Reset Scores</button>
-        </div>
+        <!-- FLASHCARD -->
+        <div class="card">
 
-    </div>
-</div>
+            <!-- CATEGORY LABEL -->
+            <div id="category" class="category-label"></div>
 
-<script src="app.js"></script>
-<script src="run.js?v=3"></script>
+            <!-- PROGRESS BAR -->
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <!-- CARD COUNTER -->
+            <div id="counter" class="counter"></div>
+
+            <!-- QUESTION + IMAGE BLOCK -->
+            <div class="question-block">
+                <img id="card-image" class="flashcard-image" src="" alt="Flashcard Image">
+                <h2 id="question" class="question"></h2>
+            </div>
+
+            <!-- HINT + ANSWER BLOCK -->
+            <div class="answer-block">
+                <div id="hint" class="hint"></div>
+                <div id="answer" class="answer"></div>
+            </div>
+
+            <!-- SCORE BOX -->
+            <div class="score-box">
+                Correct: <span id="correct">0</span>
+                &nbsp;|&nbsp;
+                Incorrect: <span id="incorrect">0</span>
+            </div>
+
+            <!-- BUTTON ROWS -->
+
+            <!-- Hint / Reveal -->
+            <div class="btn-row hint-row">
+                <button class="btn blue" onclick="showHint()">Show Hint</button>
+                <button class="btn blue" onclick="revealAnswer()">Reveal Answer</button>
+            </div>
+
+            <!-- Correct / Incorrect -->
+            <div class="btn-row action-row">
+                <button class="btn green" onclick="markCorrect()">Correct</button>
+                <button class="btn red" onclick="markIncorrect()">Incorrect</button>
+            </div>
+
+            <!-- Tools -->
+            <div class="btn-row action-row1">
+                <button class="btn blue" onclick="loadTwentyCards()">20 Cards Test</button>
+                <button class="btn gray" onclick="prevCard()">Previous</button>
+                <button class="btn gray" onclick="nextCard()">Next</button>
+                <button class="btn blue" onclick="reviewIncorrect()">Review Incorrect</button>
+                <button class="btn gray" onclick="printIncorrect()">Print Incorrect</button>
+            </div>
+
+            <!-- Reset Scores -->
+            <div class="btn-row reset">
+                <button class="btn red" onclick="resetScores()">Reset</button>
+            </div>
+
+        </div> <!-- END card -->
+
+    </div> <!-- END screen -->
+
+    <script src="app.js"></script>
+    <script src="run.js"></script>
 
 </body>
 </html>

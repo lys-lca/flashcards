@@ -225,3 +225,23 @@ function printIncorrect() {
     printArea.style.display = "none";
     mainScreen.style.display = "block";
 }
+
+function toggleDarkMode() {
+    const btn = event.target;
+    document.body.classList.toggle("dark-mode");
+
+    btn.innerText = document.body.classList.contains("dark-mode")
+        ? "Light Mode"
+        : "Dark Mode";
+}
+
+// Load saved mode on startup
+window.addEventListener("load", () => {
+    const enabled = localStorage.getItem("darkMode") === "true";
+
+    if (enabled) {
+        document.body.classList.add("dark-mode");
+        document.querySelector(".btn.gray[onclick*='toggleDarkMode']")
+            .innerText = "Light Mode";
+    }
+});

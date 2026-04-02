@@ -1,9 +1,63 @@
 /* -------------------------------------------------------
+   PHASE 6 — FULL UI REDESIGN WITH DARK MODE
+------------------------------------------------------- */
+
+/* -------------------------------------------------------
+   THEME VARIABLES (LIGHT MODE DEFAULT)
+------------------------------------------------------- */
+:root {
+    --bg: #eef1f7;
+    --card-bg: #ffffff;
+    --text: #222;
+    --muted-text: #555;
+
+    --category-bg: #e3e7f3;
+    --category-border: #d0d5e2;
+
+    --question-block-bg: #f7f9fc;
+    --answer-block-bg: #eef7ee;
+
+    --image-bg: #e6ebf3;
+
+    --answer-text: #155412; /* Light mode answer green */
+
+    --shadow: rgba(0,0,0,0.12);
+
+    --progress-bg: #d9d9d9;
+    --progress-fill: #0078d4;
+}
+
+/* -------------------------------------------------------
+   DARK MODE THEME
+------------------------------------------------------- */
+body.dark-mode {
+    --bg: #1b1c1f;
+    --card-bg: #282a2e;
+    --text: #f0f0f0;
+    --muted-text: #bbbbbb;
+
+    --category-bg: #3a3c42;
+    --category-border: #4b4d52;
+
+    --question-block-bg: #323438;
+    --answer-block-bg: #243125;
+
+    --image-bg: #2f3136;
+
+    --answer-text: #e6e6e6; /* ✅ fixed light grey answer text */
+
+    --shadow: rgba(0,0,0,0.6);
+
+    --progress-bg: #444;
+    --progress-fill: #4ea2ff;
+}
+
+/* -------------------------------------------------------
    GLOBAL
 ------------------------------------------------------- */
 body {
     font-family: Arial, sans-serif;
-    background: #eef1f7;
+    background: var(--bg);
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,7 +66,7 @@ body {
 
 .screen {
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     padding: 20px;
 }
 
@@ -32,53 +86,104 @@ body {
 }
 
 /* -------------------------------------------------------
-   FLASHCARD
+   CARD
 ------------------------------------------------------- */
 .card {
-    background: #fff;
+    background: var(--card-bg);
     padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 18px;
+    box-shadow: 0 6px 18px var(--shadow);
     margin-top: 20px;
 }
 
-.category-label,
-.question {
-    min-height: 24px;
-    display: block;
-    color: #222;
+/* CATEGORY LABEL */
+.category-label {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background: var(--category-bg);
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: var(--text);
+    border: 1px solid var(--category-border);
+    margin-bottom: 15px;
 }
 
 /* -------------------------------------------------------
-   IMAGE
+   PROGRESS BAR
 ------------------------------------------------------- */
-.flashcard-image {
+.progress-container {
     width: 100%;
-    min-height: 120px;
-    background: #f6f6f6;
-    border-radius: 8px;
+    background: var(--progress-bg);
+    border-radius: 10px;
+    height: 10px;
+    margin: 5px 0 15px 0;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 0%;
+    background: var(--progress-fill);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+/* -------------------------------------------------------
+   QUESTION + IMAGE SECTION
+------------------------------------------------------- */
+.question-block {
+    background: var(--question-block-bg);
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 3px 8px var(--shadow);
+}
+
+.flashcard-image {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    background: var(--image-bg);
+    border-radius: 10px;
     margin-bottom: 12px;
 }
 
+.question {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--text);
+    margin: 12px 0;
+}
+
 /* -------------------------------------------------------
-   HINT + ANSWER
+   HINT + ANSWER SECTION
 ------------------------------------------------------- */
+.answer-block {
+    background: var(--answer-block-bg);
+    padding: 16px;
+    border-radius: 14px;
+    margin-top: 20px;
+    box-shadow: 0 3px 8px var(--shadow);
+}
+
 .hint {
     visibility: hidden;
     min-height: 22px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     font-style: italic;
-    color: #555;
+    color: var(--muted-text);
 }
 
 .answer {
     visibility: hidden;
     min-height: 30px;
-    margin-top: 15px;
-    padding-top: 12px;
+    margin-top: 10px;
+    padding-top: 6px;
     border-top: 2px solid #ccc;
     font-weight: bold;
-    color: #154a0f;
+    color: var(--answer-text); /* ✅ uses theme variable */
 }
 
 /* -------------------------------------------------------
@@ -88,203 +193,40 @@ body {
     text-align: center;
     font-size: 16px;
     margin-top: 15px;
+    color: var(--text);
 }
 
 /* -------------------------------------------------------
    BUTTONS
 ------------------------------------------------------- */
 .btn-row {
-    margin-top: 20px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 12px 0;
 }
 
-/* Base button styling */
 .btn {
     padding: 12px 18px;
-    margin: 6px;
     font-size: 16px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
     min-width: 120px;
-    transition: opacity 0.15s ease-in-out;
+    transition: opacity 0.2s ease;
 }
 
-/* Colour variants */
 .blue  { background: #0078d4; color: #fff; }
 .green { background: #2e7d32; color: #fff; }
 .red   { background: #c62828; color: #fff; }
-.gray  { background: #777;   color: #fff; }
+.gray  { background: #555;   color: #fff; }
 
 .btn:hover {
     opacity: 0.85;
 }
 
-.counter {
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #444;
-}
-
-/* -----------------------------------
-   CARD COUNTER
------------------------------------ */
-.counter {
-    text-align: center;
-    font-size: 15px;
-    margin: 5px 0 10px 0;
-    color: #333;
-}
-
-/* -----------------------------------
-   BUTTON ROW SPACING
------------------------------------ */
-.btn-row {
-    display: flex;
-    justify-content: center;
-    gap: 12px;        /* equal spacing between buttons */
-    margin: 12px 0;   /* consistent vertical spacing */
-}
-
-/* Hint row spacing (tighter grouping) */
-.hint-row {
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-/* Correct/Incorrect row closer to hint row */
-.action-row {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-/* Navigation + test tools row */
-.action-row1 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-/* Reset button row */
-.reset {
-    margin-top: 15px;
-}
-
-/* Optional: make the Reset button narrower */
-.reset .btn {
-    min-width: 100px;
-}
-
-/* -----------------------------------
-   BETTER SCORE BOX SPACING
------------------------------------ */
-.score-box {
-    margin-top: 15px;
-    margin-bottom: 10px;
-}/* -----------------------------------
-   CATEGORY HEADING STYLE
------------------------------------ */
-.category-label {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-
-    background: #e3e7f3;       /* soft light-blue/grey background */
-    padding: 10px 15px;
-    border-radius: 8px;
-
-    margin-bottom: 12px;
-    margin-top: 5px;
-
-    color: #222;
-    border: 1px solid #d0d5e2; /* subtle outline */
-}
-
-/* -------------------------------------------------------
-   PHASE 6 — MODERN UI REDESIGN
-------------------------------------------------------- */
-
-/* Main card container improvements */
-.card {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 20px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    margin-top: 20px;
-}
-
-/* --- Question + Image box -------------------------------- */
-.question-block {
-    background: #f7f9fc;
-    padding: 18px;
-    border-radius: 14px;
-    margin-bottom: 18px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
-}
-
-/* Make the question stand out */
-.question {
-    font-size: 22px;
-    font-weight: bold;
-    color: #222;
-    text-align: center;
-    margin: 12px 0;
-}
-
-/* Improve image spacing and style */
-.flashcard-image {
-    width: 100%;
-    background: #e6ebf3;
-    border-radius: 10px;
-    margin-bottom: 12px;
-}
-
-/* --- Hint + Answer block -------------------------------- */
-.answer-block {
-    background: #eef7ee;
-    padding: 16px;
-    border-radius: 14px;
-    margin-top: 20px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-}
-
-/* Improve hint/answer visibility & spacing */
-.hint {
-    visibility: hidden;
-    font-style: italic;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-.answer {
-    visibility: hidden;
-    font-size: 18px;
-    font-weight: bold;
-    color: #155412;
-}
-
-/* --- Progress bar -------------------------------- */
-.progress-container {
-    width: 100%;
-    background: #d9d9d9;
-    border-radius: 10px;
-    height: 10px;
-    margin: 10px 0 20px 0;
-}
-
-.progress-bar {
-    height: 10px;
-    width: 0%;
-    background: #0078d4;
-    border-radius: 10px;
-    transition: width 0.4s ease;
-}
-
-/* Improve button row spacing */
-.btn-row {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin: 12px 0;
+/* Dark mode button polish */
+body.dark-mode .btn {
+    opacity: 0.95;
 }

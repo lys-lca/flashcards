@@ -1,0 +1,290 @@
+/* -------------------------------------------------------
+   GLOBAL
+------------------------------------------------------- */
+body {
+    font-family: Arial, sans-serif;
+    background: #eef1f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.screen {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* -------------------------------------------------------
+   CATEGORY AREA
+------------------------------------------------------- */
+.category-area {
+    margin-bottom: 20px;
+}
+
+#category-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+
+/* -------------------------------------------------------
+   FLASHCARD
+------------------------------------------------------- */
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-top: 20px;
+}
+
+.category-label,
+.question {
+    min-height: 24px;
+    display: block;
+    color: #222;
+}
+
+/* -------------------------------------------------------
+   IMAGE
+------------------------------------------------------- */
+.flashcard-image {
+    width: 100%;
+    min-height: 120px;
+    background: #f6f6f6;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+/* -------------------------------------------------------
+   HINT + ANSWER
+------------------------------------------------------- */
+.hint {
+    visibility: hidden;
+    min-height: 22px;
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+.answer {
+    visibility: hidden;
+    min-height: 30px;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 2px solid #ccc;
+    font-weight: bold;
+    color: #154a0f;
+}
+
+/* -------------------------------------------------------
+   SCORE BOX
+------------------------------------------------------- */
+.score-box {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+/* -------------------------------------------------------
+   BUTTONS
+------------------------------------------------------- */
+.btn-row {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Base button styling */
+.btn {
+    padding: 12px 18px;
+    margin: 6px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    min-width: 120px;
+    transition: opacity 0.15s ease-in-out;
+}
+
+/* Colour variants */
+.blue  { background: #0078d4; color: #fff; }
+.green { background: #2e7d32; color: #fff; }
+.red   { background: #c62828; color: #fff; }
+.gray  { background: #777;   color: #fff; }
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.counter {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* -----------------------------------
+   CARD COUNTER
+----------------------------------- */
+.counter {
+    text-align: center;
+    font-size: 15px;
+    margin: 5px 0 10px 0;
+    color: #333;
+}
+
+/* -----------------------------------
+   BUTTON ROW SPACING
+----------------------------------- */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;        /* equal spacing between buttons */
+    margin: 12px 0;   /* consistent vertical spacing */
+}
+
+/* Hint row spacing (tighter grouping) */
+.hint-row {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Correct/Incorrect row closer to hint row */
+.action-row {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Navigation + test tools row */
+.action-row1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Reset button row */
+.reset {
+    margin-top: 15px;
+}
+
+/* Optional: make the Reset button narrower */
+.reset .btn {
+    min-width: 100px;
+}
+
+/* -----------------------------------
+   BETTER SCORE BOX SPACING
+----------------------------------- */
+.score-box {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}/* -----------------------------------
+   CATEGORY HEADING STYLE
+----------------------------------- */
+.category-label {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+
+    background: #e3e7f3;       /* soft light-blue/grey background */
+    padding: 10px 15px;
+    border-radius: 8px;
+
+    margin-bottom: 12px;
+    margin-top: 5px;
+
+    color: #222;
+    border: 1px solid #d0d5e2; /* subtle outline */
+}
+
+/* -------------------------------------------------------
+   PHASE 6 — MODERN UI REDESIGN
+------------------------------------------------------- */
+
+/* Main card container improvements */
+.card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    margin-top: 20px;
+}
+
+/* --- Question + Image box -------------------------------- */
+.question-block {
+    background: #f7f9fc;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+}
+
+/* Make the question stand out */
+.question {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    text-align: center;
+    margin: 12px 0;
+}
+
+/* Improve image spacing and style */
+.flashcard-image {
+    width: 100%;
+    background: #e6ebf3;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/* --- Hint + Answer block -------------------------------- */
+.answer-block {
+    background: #eef7ee;
+    padding: 16px;
+    border-radius: 14px;
+    margin-top: 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+}
+
+/* Improve hint/answer visibility & spacing */
+.hint {
+    visibility: hidden;
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.answer {
+    visibility: hidden;
+    font-size: 18px;
+    font-weight: bold;
+    color: #155412;
+}
+
+/* --- Progress bar -------------------------------- */
+.progress-container {
+    width: 100%;
+    background: #d9d9d9;
+    border-radius: 10px;
+    height: 10px;
+    margin: 10px 0 20px 0;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 0%;
+    background: #0078d4;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+/* Improve button row spacing */
+.btn-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 12px 0;
+}
